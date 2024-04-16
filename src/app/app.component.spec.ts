@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'vivianz-basic-angular-app' title`, () => {
+  it(`should have the 'CyberLabs' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('vivianz-basic-angular-app');
+    expect(app.title).toEqual('CyberLabs');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, vivianz-basic-angular-app');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, CyberLabs');
   });
 });
