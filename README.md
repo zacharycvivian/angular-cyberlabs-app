@@ -1,6 +1,10 @@
-# VivianzBasicAngularApp
+# CyberLabs Template
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.5.
+
+## Installing Packages
+
+Before running this application, navigate to it's directory and run 'npm install' to install all the necessary packages.
 
 ## Development server
 
