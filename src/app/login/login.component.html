@@ -5,6 +5,8 @@
       <input type="text" #username placeholder="Username" class="login-input"/>
       <input type="password" #password placeholder="Password" class="login-input"/>
       <button type="submit" class="login-button">Login</button>
+      <!-- New button for creating an account -->
+      <button type="button" class="login-button" (click)="redirectToCreateAccount()" style="background-color: #1A73E8; margin-top: 10px;">Create New Account</button>
     </form>
   </div>
 </div>
