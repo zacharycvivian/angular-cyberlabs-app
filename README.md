@@ -2,6 +2,14 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.5.
 
+# Test Accounts
+
+Username: student 
+Password: password
+
+Username: teacher
+Password: password
+
 ## Installing Packages
 
 Before running this application, navigate to it's directory and run 'npm install' to install all the necessary packages.
