@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';  
+import { OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-student-dashboard',
@@ -25,6 +26,17 @@ export class StudentDashboardComponent {
   selectedFile: File | null = null;
 
   constructor(private router: Router) {}
+
+// Default view when no courses are selected
+defaultView(): void {
+  this.currentView = 'welcome'; 
+  this.selectedCourse = null;
+  this.selectedLab = null;
+}
+
+ngOnInit(): void {
+  this.defaultView();  // Set the default view when the component initializes
+}
 
   //For adding files for lab submission
   onFileSelected(event: any): void {
