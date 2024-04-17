@@ -20,8 +20,13 @@ export class LoginComponent {
       alert('Invalid credentials');
     }
   }
-
   redirectToCreateAccount() {
     this.router.navigate(['/create-account']);
   }
+
+  /*
+  redirectToForgotPassword() {
+    this.router.navigate(['/forgot-password']);
+  }
+  */
 }

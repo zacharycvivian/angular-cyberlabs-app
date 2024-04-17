@@ -5,6 +5,7 @@ import { StudentDashboardComponent } from './student-dashboard/student-dashboard
 import { TeacherDashboardComponent } from './teacher-dashboard/teacher-dashboard.component';
 import { VmViewComponent } from './vm-view/vm-view.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
+//import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -12,6 +13,7 @@ export const routes: Routes = [
   { path: 'teacher-dashboard', component: TeacherDashboardComponent },
   { path: 'vm-view', component: VmViewComponent },
   { path: 'create-account', component: CreateAccountComponent},
+  //{ path: 'forgot-password', component: ForgotPasswordComponent},
   { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];
 
