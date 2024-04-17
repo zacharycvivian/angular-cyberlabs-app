@@ -1,1 +1,13 @@
-<p>create-account works!</p>
+<div class="login-container">
+    <div class="login-box">
+      <h1>Create CyberLabs Account</h1>
+      <form (submit)="createAccount(form.value); $event.preventDefault()" #form="ngForm">
+        <input type="text" ngModel name="name" placeholder="Name" class="login-input" required>
+        <input type="email" ngModel name="email" placeholder="Email" class="login-input" required>
+        <input type="password" ngModel name="password" placeholder="Password" class="login-input" required>
+        <input type="password" ngModel name="verifyPassword" placeholder="Verify Password" class="login-input" required>
+        <button type="submit" class="login-button" [disabled]="!form.valid">Create Account</button>
+      </form>
+    </div>
+  </div>
+  
