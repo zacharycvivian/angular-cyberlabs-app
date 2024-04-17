@@ -182,6 +182,18 @@ export class TeacherDashboardComponent {
 
   constructor(private router: Router) {}
 
+    // Default view when no courses are selected
+    defaultView(): void {
+      this.currentView = 'welcome';
+      this.selectedCourse = null;
+      this.selectedLab = null;
+    }
+  
+    // Loads default view
+    ngOnInit(): void {
+      this.defaultView(); // Set the default view when the component initializes
+    }
+
   onFileSelected(event: any): void {
     this.selectedFile = event.target.files[0];
   }

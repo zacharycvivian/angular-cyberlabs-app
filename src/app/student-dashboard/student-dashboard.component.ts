@@ -1,20 +1,20 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';  
+import { FormsModule } from '@angular/forms';
 import { OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-student-dashboard',
   templateUrl: './student-dashboard.component.html',
   styleUrls: ['./student-dashboard.component.css'],
-  imports: [CommonModule, FormsModule],  
-  standalone: true
+  imports: [CommonModule, FormsModule],
+  standalone: true,
 })
 export class StudentDashboardComponent {
   currentView: string = '';
   selectedCourse: string | null = null;
-  selectedLab: any = null;  
+  selectedLab: any = null;
   //We will need to modify this to actually include information from the SQL database
   courses: string[] = [
     'Introduction to Cybersecurity',
@@ -22,21 +22,22 @@ export class StudentDashboardComponent {
     'Network Security',
     'IT Security',
   ];
-  labs: any[] = [];  
+  labs: any[] = [];
   selectedFile: File | null = null;
 
   constructor(private router: Router) {}
 
-// Default view when no courses are selected
-defaultView(): void {
-  this.currentView = 'welcome'; 
-  this.selectedCourse = null;
-  this.selectedLab = null;
-}
+  // Default view when no courses are selected
+  defaultView(): void {
+    this.currentView = 'welcome';
+    this.selectedCourse = null;
+    this.selectedLab = null;
+  }
 
-ngOnInit(): void {
-  this.defaultView();  // Set the default view when the component initializes
-}
+  // Loads default view
+  ngOnInit(): void {
+    this.defaultView(); // Set the default view when the component initializes
+  }
 
   //For adding files for lab submission
   onFileSelected(event: any): void {
@@ -50,7 +51,9 @@ ngOnInit(): void {
       return;
     }
     // Handle the file upload process, e.g., sending it to a backend server
-    console.log(`Submitting ${this.selectedFile.name} for ${this.selectedLab.name}`);
+    console.log(
+      `Submitting ${this.selectedFile.name} for ${this.selectedLab.name}`
+    );
     // Update lab status to completed
     this.selectedLab.status = 'Completed';
   }
@@ -79,21 +82,78 @@ ngOnInit(): void {
   getLabsForCourse(course: string): any[] {
     const courseLabs: { [key: string]: any[] } = {
       'Introduction to Cybersecurity': [
-        { name: 'Lab 1: Basic Security Protocols', instructor: 'Joshua Yue', instructions: 'Complete steps on securing protocols.', status: 'Completed', submission: '', dueDate: '2024-04-30' },
-        { name: 'Lab 2: Threat Analysis', instructor: 'Joshua Yue', instructions: 'Analyze reported threats.', status: 'In Progress', submission: '', dueDate: '2024-05-15' }
+        {
+          name: 'Lab 1: Basic Security Protocols',
+          instructor: 'Joshua Yue',
+          instructions: 'Complete steps on securing protocols.',
+          status: 'Completed',
+          submission: '',
+          dueDate: '2024-04-30',
+        },
+        {
+          name: 'Lab 2: Threat Analysis',
+          instructor: 'Joshua Yue',
+          instructions: 'Analyze reported threats.',
+          status: 'In Progress',
+          submission: '',
+          dueDate: '2024-05-15',
+        },
       ],
       'Database Design & Implementation': [
-        { name: 'Lab 1: SQL Injection', instructor: 'Mohammad Ashrafuzzaman', instructions: 'Perform SQL injection on a sample database.', status: 'In Progress', submission: '', dueDate: '2024-04-25' },
-        { name: 'Lab 2: Data Normalization', instructor: 'Mohammad Ashrafuzzaman', instructions: 'Normalize the given database schema.', status: 'Late', submission: '', dueDate: '2024-05-05' }
+        {
+          name: 'Lab 1: SQL Injection',
+          instructor: 'Mohammad Ashrafuzzaman',
+          instructions: 'Perform SQL injection on a sample database.',
+          status: 'In Progress',
+          submission: '',
+          dueDate: '2024-04-25',
+        },
+        {
+          name: 'Lab 2: Data Normalization',
+          instructor: 'Mohammad Ashrafuzzaman',
+          instructions: 'Normalize the given database schema.',
+          status: 'Late',
+          submission: '',
+          dueDate: '2024-05-05',
+        },
       ],
       'Network Security': [
-        { name: 'Lab 1: Firewall Setup', instructor: 'Yanwei Wu', instructions: 'Set up and configure a firewall using given specifications.', status: 'Completed', submission: '', dueDate: '2024-04-28' },
-        { name: 'Lab 2: Intrusion Detection Systems', instructor: 'Yanwei Wu', instructions: 'Implement an IDS and document its alerts.', status: 'Completed', submission: '', dueDate: '2024-05-05' }
+        {
+          name: 'Lab 1: Firewall Setup',
+          instructor: 'Yanwei Wu',
+          instructions:
+            'Set up and configure a firewall using given specifications.',
+          status: 'Completed',
+          submission: '',
+          dueDate: '2024-04-28',
+        },
+        {
+          name: 'Lab 2: Intrusion Detection Systems',
+          instructor: 'Yanwei Wu',
+          instructions: 'Implement an IDS and document its alerts.',
+          status: 'Completed',
+          submission: '',
+          dueDate: '2024-05-05',
+        },
       ],
       'IT Security': [
-        { name: 'Lab 1: Compliance Regulations', instructor: 'Bassam Zahran', instructions: 'Review compliance regulations and prepare a report.', status: 'Completed', submission: '', dueDate: '2024-05-01' },
-        { name: 'Lab 2: Secure Software Development', instructor: 'Bassam Zahran', instructions: 'Develop a small secure software application.', status: 'In Progress', submission: '', dueDate: '2024-05-11' }
-      ]
+        {
+          name: 'Lab 1: Compliance Regulations',
+          instructor: 'Bassam Zahran',
+          instructions: 'Review compliance regulations and prepare a report.',
+          status: 'Completed',
+          submission: '',
+          dueDate: '2024-05-01',
+        },
+        {
+          name: 'Lab 2: Secure Software Development',
+          instructor: 'Bassam Zahran',
+          instructions: 'Develop a small secure software application.',
+          status: 'In Progress',
+          submission: '',
+          dueDate: '2024-05-11',
+        },
+      ],
     };
     return courseLabs[course] || [];
   }
