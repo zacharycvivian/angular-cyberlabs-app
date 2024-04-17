@@ -4,9 +4,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Test Accounts
 
+Student Dashboard
 Username: student 
 Password: password
 
+Teacher Dashboard
 Username: teacher
 Password: password
 
