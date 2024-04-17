@@ -3,6 +3,12 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms'; // Required for ngModel
 
+interface StudentLabStatus {
+  name: string;
+  status: 'Completed' | 'In Progress' | 'Late' | 'Not Started';
+  completionDateTime?: string; // Optional, only if completed
+}
+
 interface Lab {
   name: string;
   instructor: string;
@@ -10,6 +16,7 @@ interface Lab {
   completion: string;
   submission: string;
   dueDate: string;
+  studentStatuses: StudentLabStatus[]; // Array of student statuses for this lab
 }
 
 interface Course {
@@ -51,17 +58,29 @@ export class TeacherDashboardComponent {
           name: 'Lab 1: Basic Security Protocols',
           instructor: 'Mohammad Ashrafuzzaman',
           instructions: 'Complete steps on securing protocols.',
-          completion: '4 of 4 Completed',
+          completion: '',
           submission: '',
           dueDate: '2024-04-30',
+          studentStatuses: [
+            { name: 'Zach Vivian', status: 'Completed', completionDateTime: '2024-04-29 10:30 AM' },
+            { name: 'Nick Hipsky', status: 'In Progress' },
+            { name: 'Eli Brown', status: 'Late', completionDateTime: '2024-05-01 11:00 AM' },
+            { name: 'Timothy Lima', status: 'Completed', completionDateTime: '2024-04-30 09:45 AM' },
+          ]
         },
         {
           name: 'Lab 2: Threat Analysis',
           instructor: 'Mohammad Ashrafuzzaman',
           instructions: 'Analyze reported threats.',
-          completion: '3 of 4 Completed',
+          completion: '',
           submission: '',
           dueDate: '2024-05-15',
+          studentStatuses: [
+            { name: 'Zach Vivian', status: 'Completed', completionDateTime: '2024-05-14 02:30 PM' },
+            { name: 'Nick Hipsky', status: 'Completed', completionDateTime: '2024-05-14 02:50 PM' },
+            { name: 'Eli Brown', status: 'In Progress' },
+            { name: 'Timothy Lima', status: 'Not Started' },
+          ]
         },
       ],
     },
@@ -79,17 +98,29 @@ export class TeacherDashboardComponent {
           name: 'Lab 1: SQL Injection',
           instructor: 'Mohammad Ashrafuzzaman',
           instructions: 'Perform SQL injection on a sample database.',
-          completion: '3 of 4 Completed',
+          completion: '',
           submission: '',
           dueDate: '2024-04-25',
+          studentStatuses: [
+            { name: 'Zach Vivian', status: 'Late' },
+            { name: 'Nick Hipsky', status: 'Completed', completionDateTime: '2024-05-14 02:50 PM' },
+            { name: 'Eli Brown', status: 'Not Started' },
+            { name: 'Timothy Lima', status: 'In Progress' },
+          ]
         },
         {
           name: 'Lab 2: Data Normalization',
           instructor: 'Mohammad Ashrafuzzaman',
           instructions: 'Normalize the given database schema.',
-          completion: '0 of 4 Completed',
+          completion: '',
           submission: '',
           dueDate: '2024-05-05',
+          studentStatuses: [
+            { name: 'Zach Vivian', status: 'Completed', completionDateTime: '2024-05-14 02:30 PM' },
+            { name: 'Nick Hipsky', status: 'Completed', completionDateTime: '2024-05-14 02:50 PM' },
+            { name: 'Eli Brown', status: 'In Progress' },
+            { name: 'Timothy Lima', status: 'In Progress' },
+          ]
         },
       ],
     },
@@ -112,6 +143,7 @@ export class TeacherDashboardComponent {
     completion: '',
     submission: '',
     dueDate: '',
+    studentStatuses: []  
   };
   labs: any[] = [];
   selectedFile: File | null = null;
@@ -121,6 +153,24 @@ export class TeacherDashboardComponent {
   onFileSelected(event: any): void {
     this.selectedFile = event.target.files[0];
   }
+
+  //Logic for updating how many students have completed a lab to the 'status' section
+  updateLabCompletionStatus(lab: Lab): void {
+    const completedCount = lab.studentStatuses.filter(s => s.status === 'Completed').length;
+    const totalStudents = lab.studentStatuses.length;
+    lab.completion = `${completedCount} of ${totalStudents} Completed`;
+  }
+
+  //Logic to update student status 
+  updateStudentStatus(lab: Lab, studentName: string, status: 'Completed' | 'In Progress' | 'Late' | 'Not Started', dateTime?: string): void {
+    const student = lab.studentStatuses.find(s => s.name === studentName);
+    if (student) {
+      student.status = status;
+      student.completionDateTime = dateTime ? dateTime : student.completionDateTime;
+      this.updateLabCompletionStatus(lab);  // Recalculate the lab's completion status
+    }
+  }
+  
 
   //Logic for submitting PDF detailed lab instructions
   submitInstructions(): void {
@@ -140,14 +190,39 @@ export class TeacherDashboardComponent {
 
   //Switch to the create lab view in the content window
   createLab(): void {
+    this.newLab = {
+      name: '',
+      instructor: '',
+      instructions: '',
+      completion: '',
+      submission: '',
+      dueDate: '',
+      studentStatuses: []  // Initialize with an empty array
+    };
+  
     this.currentView = 'createLab';
-    console.log('Switched to Create Lab view');
+    console.log('Switched to Create Lab view, form reset.');
   }
+  
+  
 
   //Logic for submitting new lab creation
   submitNewLab(): void {
     if (this.selectedCourse) {
-      this.selectedCourse.labs.push(this.newLab);
+      const numberOfStudents = this.selectedCourse.students.length;
+      this.newLab.studentStatuses = this.selectedCourse.students.map(student => ({
+        name: student.name,
+        status: 'Not Started',  // Assume all students are not started initially
+        completionDateTime: undefined
+      }));
+  
+      // Initially, no students have completed the lab
+      this.updateLabCompletionStatus(this.newLab);  // This sets '0 of X Completed'
+  
+      // Add the new lab to the course
+      this.selectedCourse.labs.push({...this.newLab});
+  
+      // Reset the newLab object for the next input
       this.newLab = {
         name: '',
         instructor: '',
@@ -155,12 +230,18 @@ export class TeacherDashboardComponent {
         completion: '',
         submission: '',
         dueDate: '',
+        studentStatuses: []
       };
-      this.currentView = 'labs'; // Return to labs view after submission
+  
+      this.currentView = 'labs'; // Navigate back to labs view after submission
     } else {
       alert('No course selected. Please select a course first.');
     }
   }
+  
+  
+  
+  
 
   //Switch to the create course view in the content window
   createCourse(): void {
@@ -218,10 +299,12 @@ export class TeacherDashboardComponent {
   }
 
   //Logic for handling what lab is selected
-  selectLab(lab: any) {
+  selectLab(lab: Lab): void {
     this.selectedLab = lab;
+    this.updateLabCompletionStatus(lab);  // Ensure status is updated whenever a lab is selected
     this.currentView = 'currentLab';
   }
+  
 
   //Switch to the edit lab view in the content window
   editLab(): void {
@@ -236,24 +319,25 @@ export class TeacherDashboardComponent {
 
   //Logic for handling the submission of updated lab information
   submitUpdatedLab(): void {
-    // First, ensure both selectedLab and selectedCourse are not null
     if (!this.selectedLab || !this.selectedCourse) {
-      alert(
-        'No lab or course selected. Please select both before trying to update a lab.'
-      );
+      alert('No lab or course selected. Please select both before trying to update a lab.');
       return;
     }
-    const index = this.selectedCourse.labs.findIndex(
-      (lab) => lab.name === this.selectedLab!.name
-    );
+    const index = this.selectedCourse.labs.findIndex(lab => lab.name === this.selectedLab!.name);
     if (index !== -1) {
-      this.selectedCourse.labs[index] = { ...this.newLab };
+      // Apply changes to the lab
+      this.selectedCourse.labs[index] = {...this.newLab};
+      
+      // Update the completion status
+      this.updateLabCompletionStatus(this.selectedCourse.labs[index]);
+  
       alert('Lab updated successfully!');
       this.currentView = 'labs'; // Navigate back to labs view
     } else {
       alert('Lab not found.');
     }
   }
+  
 
   //Fetches labs for a course when selected
   getLabsForCourse(courseName: string): Lab[] {

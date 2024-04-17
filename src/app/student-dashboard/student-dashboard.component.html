@@ -41,7 +41,7 @@
         <div *ngIf="selectedLab; else noLabSelected" class="lab-details">
           <h2>{{ selectedLab.name }}</h2>
           <p>Instructor: {{ selectedLab.instructor }}</p>
-          <p>Instructions: {{ selectedLab.instructions }}</p>
+          <p>Instructions Overview: {{ selectedLab.instructions }}</p>
           <p>Status: <span [ngClass]="selectedLab.status | lowercase">{{ selectedLab.status }}</span></p>
           <p class="due-date">Due Date: {{ selectedLab.dueDate }}</p>
           <div class="input-file-container">

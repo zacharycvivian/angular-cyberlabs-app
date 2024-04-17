@@ -47,7 +47,7 @@
             />
           </div>
           <div>
-            <label for="labInstructions">Instructions:</label>
+            <label for="labInstructions">Instructions Overview:</label>
             <input
               type="text"
               id="labInstructions"
@@ -171,7 +171,7 @@
             />
           </div>
           <div>
-            <label for="labInstructions">Instructions:</label>
+            <label for="labInstructions">Instructions Overview:</label>
             <input
               type="text"
               id="labInstructions"
@@ -217,30 +217,25 @@
             <h2>{{ selectedLab.name }}</h2>
             <button class="edit-lab-btn" (click)="editLab()">Edit Lab</button>
           </div>
-          <p>Instructor: {{ selectedLab.instructor }}</p>
-          <p>Instructions: {{ selectedLab.instructions }}</p>
-          <p>
-            Status:
-            <span [ngClass]="selectedLab.completion | lowercase">{{
-              selectedLab.completion
-            }}</span>
-          </p>
           <p class="due-date">Due Date: {{ selectedLab.dueDate }}</p>
+          <p>Instructor: {{ selectedLab.instructor }}</p>
+          <p>Instructions Overview: {{ selectedLab.instructions }}</p>
+          <p>Status: <span [ngClass]="selectedLab.completion | lowercase">{{ selectedLab.completion }}</span></p>
+          <ul>
+            <li *ngFor="let status of selectedLab.studentStatuses">
+              {{ status.name }} - {{ status.status }} {{ status.completionDateTime ? '(' + status.completionDateTime + ')' : '' }}
+            </li>
+          </ul>
           <div class="input-file-container">
-            <input
-              type="file"
-              (change)="onFileSelected($event)"
-              accept=".pdf"
-            />
+            <input type="file" (change)="onFileSelected($event)" accept=".pdf"/>
+            <button (click)="submitInstructions()">Submit Detailed Instructions (PDF)</button>
           </div>
-          <button (click)="submitInstructions()">
-            Submit Detailed Instructions (PDF)
-          </button>
         </div>
         <ng-template #noLabSelected>
           <p>Select a Lab from Your Courses</p>
         </ng-template>
       </div>
+      
     </section>
   </div>
 </div>
