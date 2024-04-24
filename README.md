@@ -1,6 +1,6 @@
 # CyberLabs Template
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.5.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.5. This app has been designed as a UI template for my Senior Project's CyberLabs environment so we can begin database integration and Proxmox integration for the VM view. 
 
 ## Test Accounts
 
@@ -14,7 +14,7 @@ Password: password
 
 ## Installing Packages
 
-Before running this application, navigate to it's directory and run 'npm install' to install all the necessary packages.
+Before running this application, navigate to it's main directory `cd angular-cyberlabs-app` and run `npm install` to install all the necessary packages.
 
 ## Development server
 
