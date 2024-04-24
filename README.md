@@ -2,6 +2,8 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.5. This app has been designed as a UI template for my Senior Project's CyberLabs environment so we can begin database integration and Proxmox integration for the VM view. 
 
+You can view a live test site with [This Link](https://zacharycvivian.github.io/angular-cyberlabs-app/login), note, there is not proper authentication built into this application, meaning you can navigate through to the different dashboards without actually being logged in. Proper security will need to be built after connecting a database. 
+
 ## Test Accounts
 
 Student Dashboard
