@@ -3,6 +3,7 @@
   flex-direction: column;
   height: 100vh;
   min-height: 100vh;
+  background-color: #ececec;
 }
 
 .dashboard-header {
@@ -13,6 +14,7 @@
   background-color: #333;
   color: white;
   padding: 0 20px;
+  z-index: 2;
 }
 
 .header-left,
@@ -38,13 +40,12 @@
 
 .sidebar {
   background-color: #f4f4f4;
-  width: 250px; /* Fixed width for the sidebar */
-  height: calc(100vh - 100px); /* Adjust height to take full height minus header */
-  padding: 20px;
-  padding-right: 40px; /* Increase right padding for more space */
-  overflow-y: auto; /* Allows scrolling within the sidebar if needed */
+  width: 250px;
+  height: calc(100vh - 100px);
+  padding: 20px 40px 20px 20px;
+  overflow-y: auto;
+  box-shadow: 10px 10px 15px #bebebe, -10px -10px 15px #ffffff;
 }
-
 
 /* General list enhancements */
 ul {
@@ -56,14 +57,14 @@ li {
   padding: 10px 15px;
   margin-bottom: 5px;
   background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px #bebebe, -5px -5px 10px #ffffff;
   transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 li:hover {
   background-color: #f9f9f9;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 2px 2px 5px #bebebe, -2px -2px 5px #ffffff; 
 }
 
 /* Specific to labs and courses */
@@ -78,21 +79,20 @@ li:hover {
 }
 
 .status {
-  font-weight: bold; /* Makes the text bold */
+  font-weight: bold;
 }
 
 .completed {
-  color: green; /* Green text for completed */
+  color: green;
 }
 
 .in-progress {
-  color: orange; /* Orange text for in progress */
+  color: orange;
 }
 
 .late {
-  color: red; /* Red text for late */
+  color: red;
 }
-
 
 .due-date {
   color: #666;
@@ -104,7 +104,7 @@ li:hover {
   padding: 20px;
   margin-top: 10px;
   border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 5px 5px 10px #bebebe, -5px -5px 10px #ffffff; 
 }
 
 .lab-details h2 {
@@ -128,27 +128,27 @@ input[type="file"] {
   list-style: none;
   padding: 0;
   margin: 0;
-  width: 100%; /* Ensures the ul takes full width of the sidebar */
+  width: 100%;
 }
 
 .sidebar li,
 .sidebar button {
-  display: flex; /* Using flexbox for centering content */
-  justify-content: center; /* Centers content horizontally */
-  align-items: center; /* Centers content vertically */
-  width: 100%; /* Ensures full width */
-  padding: 10px; /* Consistent padding */
-  background-color: #ddd; /* Uniform background color */
-  border: none; /* Removes any default borders */
-  border-radius: 4px; /* Consistent border radius */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  background-color: #ddd;
+  border-radius: 4px;
   cursor: pointer;
-  text-align: center; /* Ensures text alignment is centered */
-  font-size: 16px; /* Ensures consistent font size */
+  text-align: center;
+  font-size: 16px;
+  box-shadow: 2px 2px 4px #bebebe, -2px -2px 4px #ffffff; 
 }
 
 .sidebar li:hover,
 .sidebar button:hover {
-  background-color: #ccc; /* Hover effect */
+  background-color: #ccc;
 }
 
 button {
@@ -165,11 +165,10 @@ button:hover {
   background-color: #003d82;
 }
 
-
 .main-content {
   display: flex;
-  flex-direction: row; /* Sidebar and content side by side */
-  flex-grow: 1; /* Takes up all remaining space after the header */
+  flex-direction: row;
+  flex-grow: 1;
 }
 
 .content {
