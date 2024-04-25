@@ -160,8 +160,11 @@ export class StudentDashboardComponent {
 
   //Opens the VM view in a new tab
   openVmView() {
-    window.open(window.location.origin + '/vm-view', '_blank');
-  }
+    const url = this.router.serializeUrl(
+        this.router.createUrlTree(['/vm-view'])
+    );
+    window.open(window.location.origin + url, '_blank');
+}
 
   //Logout logic, make sure to incorporate an auth system so users cannot redirect to this URL without logging in first
   logout() {

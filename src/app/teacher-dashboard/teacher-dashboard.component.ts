@@ -407,8 +407,11 @@ export class TeacherDashboardComponent {
 
   //Opens the VM view window in a new tab
   openVmView() {
-    window.open(window.location.origin + '/vm-view', '_blank');
-  }
+    const url = this.router.serializeUrl(
+        this.router.createUrlTree(['/vm-view'])
+    );
+    window.open(window.location.origin + url, '_blank');
+}
 
   //Navigates to the login screen when logged out, this will need to be changed eventually, also the dashboards will need to check for authorization before displaying anything otherwise the user is able to change to /teacher-dashboard in the URL and can modify data as a teacher
   logout() {
