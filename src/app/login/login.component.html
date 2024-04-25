@@ -1,14 +1,41 @@
-<div class="login-container">
-  <div class="login-box">
-    <h1>UW-Platteville CyberLabs</h1>
-    <form (submit)="login(username.value, password.value); $event.preventDefault()">
-      <input type="text" #username placeholder="Username" class="login-input" />
-      <input type="password" #password placeholder="Password" class="login-input" />
-      <button type="button" class="forgot-password-button" (click)="redirectToForgotPassword()">Forgot Password?</button>
-      <div class="button-row">
-        <button type="submit" class="login-button">Login</button>
-        <button type="button" class="login-button create-account-button" (click)="redirectToCreateAccount()">Create New Account</button>
-      </div>
-    </form>
+<div class="container"></div>
+  <div class="login-container">
+    <div class="login-box">
+      <h1>UW-Platteville CyberLabs</h1>
+      <form
+        (submit)="
+          login(username.value, password.value); $event.preventDefault()
+        "
+      >
+        <input
+          type="text"
+          #username
+          placeholder="Username"
+          class="login-input"
+        />
+        <input
+          type="password"
+          #password
+          placeholder="Password"
+          class="login-input"
+        />
+        <button
+          type="button"
+          class="forgot-password-button"
+          (click)="redirectToForgotPassword()"
+        >
+          Forgot Password?
+        </button>
+        <div class="button-row">
+          <button type="submit" class="login-button">Login</button>
+          <button
+            type="button"
+            class="login-button create-account-button"
+            (click)="redirectToCreateAccount()"
+          >
+            Create New Account
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
-</div>
