@@ -165,14 +165,6 @@ h2 {
   font-style: italic;
 }
 
-.lab-details {
-  background-color: #fff;
-  padding: 20px;
-  margin-top: 10px;
-  border-radius: 20px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
 .lab-details h2 {
   border-bottom: 2px solid #eee;
   padding-bottom: 10px;
@@ -182,7 +174,7 @@ h2 {
   background-color: #fff;
   padding: 20px;
   margin-top: 10px;
-  border-radius: 8px;
+  border-radius: 20px;
   box-shadow: 5px 5px 10px #bebebe, -5px -5px 10px #ffffff; 
 }
 
