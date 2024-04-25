@@ -1,4 +1,4 @@
-.student-dashboard {
+.teacher-dashboard {
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -47,7 +47,6 @@
   box-shadow: 10px 10px 15px #bebebe, -10px -10px 15px #ffffff; 
 }
 
-/* General list enhancements */
 ul {
   padding-left: 0;
   list-style-type: none;
@@ -57,7 +56,7 @@ li {
   padding: 10px 15px;
   margin-bottom: 5px;
   background-color: #fff;
-  border-radius: 10px;
+  border-radius: 20px;
   box-shadow: 5px 5px 10px #bebebe, -5px -5px 10px #ffffff; 
   transition: background-color 0.3s, box-shadow 0.3s;
 }
@@ -67,7 +66,6 @@ li:hover {
   box-shadow: 2px 2px 5px #bebebe, -2px -2px 5px #ffffff; 
 }
 
-/* Specific to labs and courses */
 .content ul li {
   cursor: pointer;
   display: block;
@@ -76,7 +74,7 @@ li:hover {
 h2 {
   margin: 0;
   padding: 0;
-  font-size: 1.5em; /* Adjust font size as needed */
+  font-size: 1.5em; 
 }
 
 .content h2 {
@@ -87,21 +85,21 @@ h2 {
 .lab-header {
   display: flex;
   justify-content: space-between;
-  align-items: center; /* Ensures vertical centering */
+  align-items: center; 
   margin-bottom: 20px;
 }
 
 .student-header {
   display: flex;
   justify-content: space-between;
-  align-items: center; /* Ensures vertical centering */
+  align-items: center; 
   margin-bottom: 20px;
 }
 
 .lab-details-header {
   display: flex;
   justify-content: space-between;
-  align-items: center; /* Ensures vertical centering */
+  align-items: center; 
   margin-bottom: 20px;
 }
 
@@ -110,9 +108,10 @@ h2 {
   background-color: #4caf50;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 16px;
   cursor: pointer;
   transition: background-color 0.3s;
+  box-shadow: 2px 2px 4px #bebebe, -2px -2px 4px #ffffff; 
 }
 
 .create-lab-btn:hover {
@@ -121,22 +120,24 @@ h2 {
 
 .add-student-btn {
   padding: 8px 16px;
-  background-color: #007bff; /* A different shade for differentiation, e.g., blue */
+  background-color: #007bff; 
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 16px;
   cursor: pointer;
   transition: background-color 0.3s;
+  box-shadow: 2px 2px 4px #bebebe, -2px -2px 4px #ffffff; 
 }
 
 .edit-lab-btn {
   padding: 8px 16px;
-  background-color: #007bff; /* A different shade for differentiation, e.g., blue */
+  background-color: #007bff; 
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 16px;
   cursor: pointer;
   transition: background-color 0.3s;
+  box-shadow: 2px 2px 4px #bebebe, -2px -2px 4px #ffffff; 
 }
 
 .add-student-btn:hover {
@@ -144,19 +145,19 @@ h2 {
 }
 
 .status {
-  font-weight: bold; /* Makes the text bold */
+  font-weight: bold;
 }
 
 .completed {
-  color: green; /* Green text for completed */
+  color: green; 
 }
 
 .in-progress {
-  color: orange; /* Orange text for in progress */
+  color: orange; 
 }
 
 .late {
-  color: red; /* Red text for late */
+  color: red; 
 }
 
 .due-date {
@@ -168,7 +169,7 @@ h2 {
   background-color: #fff;
   padding: 20px;
   margin-top: 10px;
-  border-radius: 8px;
+  border-radius: 20px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -197,35 +198,36 @@ input[type="file"] {
   background-color: #fff;
   padding: 20px;
   margin-top: 10px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin-right: 10px;
+  border-radius: 20px;
+  box-shadow: 5px 5px 10px #bebebe, -5px -5px 10px #ffffff; 
   display: flex;
-  flex-direction: column; /* Ensures that each form element stacks vertically */
+  flex-direction: column; 
 }
 
 .form-container h2 {
   color: #333;
-  margin-bottom: 20px; /* Increased spacing after headers */
+  margin-bottom: 20px;
   font-size: 1.8em;
 }
 
 .form-container div {
-  margin-bottom: 15px; /* More space below each input group */
+  margin-bottom: 15px; 
 }
 
 .form-container label {
   display: block;
-  margin-bottom: 5px; /* Space between label and input */
+  margin-bottom: 5px; 
   color: #333;
   font-weight: bold;
   width: 100%;
 }
 
 .form-container input[type="text"] {
-  width: 100%; /* Full width to align right */
+  width: 100%; 
   padding: 8px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 10px;
 }
 
 .form-container fieldset {
@@ -245,7 +247,8 @@ input[type="file"] {
   color: white;
   border: none;
   padding: 10px 20px;
-  border-radius: 4px;
+  border-radius: 16px;
+  box-shadow: 2px 2px 4px #bebebe, -2px -2px 4px #ffffff; 
   cursor: pointer;
   transition: background-color 0.3s;
   font-size: 1em;
@@ -278,7 +281,7 @@ input[type="file"] {
   list-style: none;
   padding: 0;
   margin: 0;
-  width: 100%; /* Ensures the ul takes full width of the sidebar */
+  width: 100%; 
 }
 
 .sidebar li,
@@ -289,7 +292,7 @@ input[type="file"] {
   width: 100%;
   padding: 10px;
   background-color: #ddd;
-  border-radius: 4px;
+  border-radius: 18px;
   cursor: pointer;
   text-align: center;
   font-size: 16px;
@@ -306,7 +309,7 @@ button {
   color: #fff;
   border: none;
   padding: 10px 20px;
-  border-radius: 5px;
+  border-radius: 16px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
@@ -317,8 +320,8 @@ button:hover {
 
 .main-content {
   display: flex;
-  flex-direction: row; /* Sidebar and content side by side */
-  flex-grow: 1; /* Takes up all remaining space after the header */
+  flex-direction: row; 
+  flex-grow: 1; 
 }
 
 .content {

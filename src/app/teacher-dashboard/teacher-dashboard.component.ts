@@ -105,7 +105,7 @@ export class TeacherDashboardComponent {
       ],
     },
     {
-      name: 'Database Design & Implementation',
+      name: 'Database Design',
       instructor: 'Mohammad Ashrafuzzaman',
       students: [
         { name: 'Zach Vivian', selected: true },

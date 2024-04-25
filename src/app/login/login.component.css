@@ -1,47 +1,81 @@
 .login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Full viewport height */
-    background-color: #f4f4f4; /* Light grey background */
-  }
-  
-  .login-box {
-    background: white;
-    padding: 40px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    border-radius: 8px;
-    width: 300px;
-    text-align: center;
-  }
-  
-  h1 {
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  .login-input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box; /* Include padding and border in the element's width */
-  }
-  
-  .login-button {
-    background-color: #4CAF50; /* Green background */
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 100%;
-    margin-top: 20px;
-    font-size: 16px;
-  }
-  
-  .login-button:hover {
-    background-color: #45a049; /* Darker green */
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+.login-box {
+  background: white;
+  padding: 40px;
+  border-radius: 30px;
+  width: 350px;
+  text-align: center;
+  box-shadow: 10px 10px 15px #bebebe, -10px -10px 15px #ffffff;
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.login-input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: inset 4px 4px 6px #bebebe, inset -4px -4px 6px #ffffff;
+  box-sizing: border-box;
+}
+
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.login-button,
+.forgot-password-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  font-size: 16px;
+  box-shadow: 4px 4px 8px #bebebe, -4px -4px 8px #ffffff;
+  transition: background-color 0.3s;
+}
+
+.login-button {
+  background-color: #4caf50;
+  color: white;
+  flex: 1 1 45%;
+}
+
+.login-button:hover,
+.forgot-password-button:hover {
+  box-shadow: 2px 2px 4px #bebebe, -2px -2px 4px #ffffff;
+}
+
+.forgot-password-button {
+  background-color: #cdd4dd;
+  color: #333;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.create-account-button {
+  background-color: #1a73e8;
+  color: white;
+  flex: 1 1 45%;
+}
+
+.create-account-button:hover {
+  background-color: #0056b3;
+}
+
+.button-row > button:not(:last-child) {
+  margin-right: 10px;
+}

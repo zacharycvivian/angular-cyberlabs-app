@@ -18,7 +18,7 @@ export class StudentDashboardComponent {
   //We will need to modify this to actually include information from the SQL database
   courses: string[] = [
     'Introduction to Cybersecurity',
-    'Database Design & Implementation',
+    'Database Design',
     'Network Security',
     'IT Security',
   ];
@@ -99,7 +99,7 @@ export class StudentDashboardComponent {
           dueDate: '2024-05-15',
         },
       ],
-      'Database Design & Implementation': [
+      'Database Design': [
         {
           name: 'Lab 1: SQL Injection',
           instructor: 'Mohammad Ashrafuzzaman',
